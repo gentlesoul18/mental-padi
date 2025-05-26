@@ -7,12 +7,13 @@ from starlette.middleware.cors import CORSMiddleware
 from core.database import engine
 from auth.routers.auth import auth_router
 from user.routers.user import user_router
+from conversation.routers.conversation import chat_router
 
 # from core.config_loader import settings
 
 app = FastAPI()
 
-# if settings.BACKEND_CORS_ORIGINS:
+# cors
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -25,6 +26,7 @@ app.add_middleware(
 
 app.include_router(auth_router, prefix="/api", tags=["auth"])
 app.include_router(user_router, prefix="/api", tags=["user"])
+app.include_router(chat_router, prefix="/api", tags=["chat"])
 
 @app.get("/")
 async def root():

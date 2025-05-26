@@ -44,7 +44,7 @@ for chunk in completion:
     print(chunk.choices[0].delta.content or "", end="")
 """
 
-async def groq_chat_completion(messages: list, model: str = "llama2-13b-chat", temperature: float = 1.0, max_tokens: int = 1024):
+async def get_groq_response(messages: list, model: str = "llama2-13b-chat", temperature: float = 1.0, max_tokens: int = 1024):
     """
     Asynchronous function to get chat completion from Groq API.
     """
